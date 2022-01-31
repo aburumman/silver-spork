@@ -4,8 +4,9 @@ metadata:
   name: web2
   annotations:
     site: iste
+  labels:
+    tier: test
 spec:
   containers:
     - name: web2
       image: nginx
-      

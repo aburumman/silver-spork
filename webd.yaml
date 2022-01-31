@@ -4,6 +4,8 @@ metadata:
   name: webd
   annotations: 
     site: blog
+  labels:
+    tier: test
 spec:
   containers:
     - name: webd

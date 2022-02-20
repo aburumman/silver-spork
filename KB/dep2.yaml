@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rs2
+  labels:
+    env: practice
+    dev: tomiwa
+    tier: test
+spec:
+  template:
+    metadata:
+      name: rs1
+      labels:
+        env: practice
+        dev: tomiwa
+        tier: test
+    spec:
+      containers:
+        - name: nginx-rs1
+          image: nginx
+          resources:
+            limits:
+              memory: "200Mi"
+              cpu: "2000"
+  replicas: 2
+  selector:
+    matchLabels:
+      env: practice
+      dev: tomiwa
+      tier: test
+ 

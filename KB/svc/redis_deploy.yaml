@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment 
+metadata: 
+  name: redis-deploy 
+  labels:
+    env: test
+    use: database
+spec: 
+  replicas: 1
+  selector:
+    matchLabels:
+      env: test
+      use: database 
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 2
+      maxUnavailable: 1
+  revisionHistoryLimit: 10
+  minReadySeconds: 1
+  progressDeadlineSeconds: 60
+  template:
+    metadata:
+      name:
+        redis-deploy 
+      labels: 
+        env: test
+        use: database
+    spec:
+      containers:
+        - name: redis-deploy 
+          image: redis 
+          resources:
+            limits:
+              memory: "128Mi"
+              cpu: "1000"

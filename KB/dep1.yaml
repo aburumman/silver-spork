@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: rs1
+  labels:
+    env: practice
+    dev: tomiwa
+    tier: test
+spec:
+  template:
+    metadata:
+      name: rs1
+      labels:
+        env: practice
+        dev: tomiwa
+        tier: test
+    spec:
+      containers:
+        - name: nginx-rs1
+          image: nginx
+  replicas: 2
+  selector:
+    matchLabels:
+      env: practice
+      dev: tomiwa
+      tier: test
+
